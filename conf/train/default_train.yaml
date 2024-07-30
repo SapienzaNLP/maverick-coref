@@ -1,0 +1,47 @@
+# reproducibility
+seed: 30
+
+model_name: ${model_name}  # used to name the directory in which model's checkpoints will be stored (experiments/model_name/...)
+project_name: maverick  # used to name the project in wandb
+export: False
+
+# pl_trainer
+pl_trainer:
+  _target_: pytorch_lightning.Trainer
+  log_every_n_steps: 10
+  accelerator: gpu
+  devices: 1
+  num_nodes: 1
+  accumulate_grad_batches: 4
+  gradient_clip_val: 1.0
+  val_check_interval: 0.5   # you can specify an int "n" here => validation every "n" steps
+  max_epochs: 300
+  deterministic: True
+  fast_dev_run: False
+  precision: 16
+  num_sanity_val_steps: 0
+
+
+# early stopping callback
+# "early_stopping_callback: null" will disable early stopping
+early_stopping_callback:
+  _target_: pytorch_lightning.callbacks.EarlyStopping
+  monitor: val/conll2012_f1_score
+  mode: max
+  patience: 120
+
+# model_checkpoint_callback
+# "model_checkpoint_callback: null" will disable model checkpointing
+model_checkpoint_callback:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  monitor: val/conll2012_f1_score
+  mode: max
+  verbose: True
+  save_top_k: 1
+  filename: 'checkpoint-val_f1_{val/conll2012_f1_score:.4f}-epoch_{epoch:02d}'
+  auto_insert_metric_name: False
+
+learning_rate_callback:
+  _target_: pytorch_lightning.callbacks.LearningRateMonitor
+  logging_interval: "step"
+  log_momentum: False

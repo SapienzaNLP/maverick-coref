@@ -1,0 +1,17 @@
+# Required to make the "experiments" dir the default one for the output of the models
+hydra:
+  run:
+    dir: ./experiments/${train.model_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+model_name: "maverick-coref/${model.module.model.huggingface_model_name}"
+
+defaults:
+  - _self_
+  - train: default_train
+  - model: mes/deberta-large
+  - data: ontonotes
+  - evaluation: default_evaluation
+  - logging: wandb_logging
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+

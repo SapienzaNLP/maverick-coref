@@ -1,0 +1,55 @@
+datamodule:
+  _target_: data.pl_data_modules.BasePLDataModule
+  dataset:
+    train:
+      _target_: data.datasets.OntonotesDataset
+      name: 'train'
+      path: 'data/prepare_ontonotes/train.english.jsonlines'
+      # path: 'data/prepare_preco/train_36120_preprocessed_preco.jsonl'
+      # path: 'data/litbank/official/train_enhanced_1.english.jsonlines'
+      # path: 'data/prepare_ontonotes_arabic/train.arabic.jsonlines'
+      #path: 'data/prepare_ontonotes_chinese/train.chinese.jsonlines'
+      batch_size: "${data.datamodule.batch_sizes.train}"
+      processed_dataset_path: 'data/cache_${data.datamodule.dataset.train.max_doc_len}/${model.module.model.huggingface_model_name}/ontonotes/train'
+      tokenizer: "${model.module.model.huggingface_model_name}"
+      max_doc_len: 1500
+    val:
+      _target_: data.datasets.OntonotesDataset
+      name: 'val'
+      path: 'data/prepare_ontonotes/dev.english.jsonlines'
+      # path: 'data/prepare_preco/dev_500_preprocessed_preco.jsonl'
+      # path: 'data/litbank/official/dev.english.jsonlines'
+      # path: 'data/prepare_ontonotes_arabic/dev.arabic.jsonlines'
+      # path: 'data/prepare_ontonotes_chinese/dev.chinese.jsonlines'
+      batch_size: "${data.datamodule.batch_sizes.train}"
+      processed_dataset_path: 'data/cache_${data.datamodule.dataset.train.max_doc_len}/${model.module.model.huggingface_model_name}/ontonotes/val'
+      tokenizer: "${model.module.model.huggingface_model_name}"
+    test:
+      _target_: data.datasets.OntonotesDataset
+      name: 'test'
+      path: 'data/prepare_ontonotes/test.english.jsonlines'
+      # path: 'data/prepare_preco/test_preprocessed_preco.jsonl'
+      # path: 'data/litbank/official/test.english.jsonlines'
+      # path: 'data/prepare_ontonotes_arabic/test.arabic.jsonlines'
+      # path: 'data/prepare_ontonotes_chinese/test.chinese.jsonlines'
+      # path: 'data/longtonotes/test/test.english.jsonlines' 
+      # path: 'data/gap/gap-test-ontoformat_3.jsonl'  
+      # path: 'data/wkc/test.jsonlines' 
+      # path: 'data/prepare_preco/test.english.jsonlines'       #gap/gap-ontoformat-jsonl
+
+      batch_size: "${data.datamodule.batch_sizes.train}"
+      processed_dataset_path: 'data/cache_${data.datamodule.dataset.train.max_doc_len}/${model.module.model.huggingface_model_name}/ontonotes/test'
+      tokenizer: "${model.module.model.huggingface_model_name}"
+
+
+
+  batch_sizes:
+    train: 1
+    val: 1
+    test: 1
+
+  num_workers:
+    train: 0
+    val: 0
+    test: 0
+

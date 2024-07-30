@@ -1,0 +1,23 @@
+module:
+  _target_: models.pl_modules.BasePLModule
+  RAdam:
+    _target_: torch.optim.RAdam
+    lr: 2e-5
+  Adafactor:
+    _target_: transformers.Adafactor
+    lr: 3e-5
+    weight_decay: 0.01
+    scale_parameter: False
+    relative_step: False
+  lr_scheduler: 
+    num_warmup_steps: 6000
+    num_training_steps: 80000
+  opt: "Adafactor" #RAdam
+  model:
+    _target_: models.model_incr.Maverick_incr
+    language_model: "deberta-v3-base"
+    huggingface_model_name: "microsoft/deberta-v3-base"
+    freeze_encoder: False
+    span_representation: "concat_start_end"
+    incremental_model_hidden_size: 768
+    incremental_model_num_layers: 1

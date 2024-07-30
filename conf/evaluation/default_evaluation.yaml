@@ -1,0 +1,3 @@
+# put args here
+checkpoint: "-"
+device: "cuda:0" #cpu
