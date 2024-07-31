@@ -1,5 +1,5 @@
 <h1 align="center">
-  🤘Maverick Coref🤘
+  Maverick Coref
 </h1>
 <div align="center">
 
@@ -47,19 +47,19 @@ Available models at [SapienzaNLP huggingface hub](https://huggingface.co/collect
 
 |            hf_model_name            | training dataset | Score | Singletons |
 |:-----------------------------------:|:----------------:|:-----:|:----------:|
-|    ["sapienzanlp/maverick-mes-ontonotes"](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes)    |     OntoNotes    |  83,6 |     No     |
-|     ["sapienzanlp/maverick-mes-litbank"](https://huggingface.co/sapienzanlp/maverick-mes-litbank)     |      LitBank     |  78,0 |     Yes    |
-|      ["sapienzanlp/maverick-mes-preco"](https://huggingface.co/sapienzanlp/maverick-mes-preco)      |       PreCo      |  87,4 |     Yes    |
-<!-- |    "sapienzanlp/maverick-s2e-ontonotes"    |     OntoNotes    |  83,4 |     No     |     No    | -->
-<!-- |    "sapienzanlp/maverick-incr-ontonotes"   |     Ontonotes    |  83,5 |     No     |     No    | -->
-<!-- |  "sapienzanlp/maverick-mes-ontonotes-base" |     Ontonotes    |  81,4 |     No     |     No    | -->
-<!-- | "sapienzanlp/maverick-s2e-ontonotes-base"  |     Ontonotes    |  81,1 |     No     |     No    | -->
-<!-- | "sapienzanlp/maverick-incr-ontonotes-base" |     Ontonotes    |  81,0 |     No     |     No    | -->
-<!-- |     "sapienzanlp/maverick-s2e-litbank"     |      LitBank     |  77,6 |     Yes    |     No    | -->
-<!-- |     "sapienzanlp/maverick-incr-litbank"    |      LitBank     |  78,3 |     Yes    |     No    | -->
-<!-- |      "sapienzanlp/maverick-s2e-preco"      |       PreCo      |  87,2 |     Yes    |     No    | -->
-<!-- |      "sapienzanlp/maverick-incr-preco"     |       PreCo      |  88,0 |     Yes    |     No    | -->
-N.B. Each dataset has different annotation guidelines, choose your model according to your usecase.
+|    ["sapienzanlp/maverick-mes-ontonotes"](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes)    |     OntoNotes    |  83.6 |     No     |
+|     ["sapienzanlp/maverick-mes-litbank"](https://huggingface.co/sapienzanlp/maverick-mes-litbank)     |      LitBank     |  78.0 |     Yes    |
+|      ["sapienzanlp/maverick-mes-preco"](https://huggingface.co/sapienzanlp/maverick-mes-preco)      |       PreCo      |  87.4 |     Yes    |
+<!-- |    "sapienzanlp/maverick-s2e-ontonotes"    |     OntoNotes    |  83.4 |     No     |     No    | -->
+<!-- |    "sapienzanlp/maverick-incr-ontonotes"   |     Ontonotes    |  83.5 |     No     |     No    | -->
+<!-- |  "sapienzanlp/maverick-mes-ontonotes-base" |     Ontonotes    |  81.4 |     No     |     No    | -->
+<!-- | "sapienzanlp/maverick-s2e-ontonotes-base"  |     Ontonotes    |  81.1 |     No     |     No    | -->
+<!-- | "sapienzanlp/maverick-incr-ontonotes-base" |     Ontonotes    |  81.0 |     No     |     No    | -->
+<!-- |     "sapienzanlp/maverick-s2e-litbank"     |      LitBank     |  77.6 |     Yes    |     No    | -->
+<!-- |     "sapienzanlp/maverick-incr-litbank"    |      LitBank     |  78.3 |     Yes    |     No    | -->
+<!-- |      "sapienzanlp/maverick-s2e-preco"      |       PreCo      |  87.2 |     Yes    |     No    | -->
+<!-- |      "sapienzanlp/maverick-incr-preco"     |       PreCo      |  88.0 |     Yes    |     No    | -->
+N.B. Each dataset has different annotation guidelines, choose your model according to your use case.
 
 ## Inference
 ### Inputs
@@ -72,7 +72,7 @@ Maverick inputs can be formatted as either:
   ```bash
   word_tokenized = ['Barack', 'Obama', 'is', 'traveling', 'to', 'Rome', '.',  'The', 'city', 'is', 'sunny', 'and', 'the', 'president', 'plans', 'to', 'visit', 'its', 'most', 'important', 'attractions']
   ```
-- sentence splitted, word-tokenized text, i.e., OntoNotes like input, as a list of lists of tokens:
+- sentence split, word-tokenized text, i.e., OntoNotes like input, as a list of lists of tokens:
   ```bash
   ontonotes_format = [['Barack', 'Obama', 'is', 'traveling', 'to', 'Rome', '.'], ['The', 'city', 'is', 'sunny', 'and', 'the', 'president', 'plans', 'to', 'visit', 'its', 'most', 'important', 'attractions']] 
   ```
@@ -142,7 +142,7 @@ Since Coreference Resolution may serve as a stepping stone for many downstream u
   >>> {'tokens': [...], 'clusters_token_offsets': [((5, 5), (7, 8), (17, 17)), ((0, 1), (12, 13))], 'clusters_char_offsets': None, 'clusters_token_text': [['Rome', 'The city', 'its'], ['Barack Obama', 'the president']], 'clusters_char_text': None}
   ```
 
-- **Speaker information**, Since OntoNotes models are trained with additional speaker information [(more info here)](https://catalog.ldc.upenn.edu/docs/LDC2013T19/OntoNotes-Release-5.0.pdf), you can specify speaker information with OntoNotes format. 
+- **Speaker information**, since OntoNotes models are trained with additional speaker information [(more info here)](https://catalog.ldc.upenn.edu/docs/LDC2013T19/OntoNotes-Release-5.0.pdf), you can specify speaker information with OntoNotes format. 
 
 ```bash
   #supported input: ontonotes_format 
@@ -157,7 +157,7 @@ This same repository contains also the code to train and evaluate Maverick syste
 **We strongly suggest to directly use the [python package](https://pypi.org/project/maverick-coref/) for easier inference and downstream usage.** 
 
 ## Environment
-To set up the training and evaluation environment , run the bash script setup.sh that you can find at top level in this repository. This script will handle the creation of a new conda environment and will take care of all the requirements and data preprocessing for training and evaluating a model on OntoNotes. 
+To set up the training and evaluation environment, run the bash script setup.sh that you can find at top level in this repository. This script will handle the creation of a new conda environment and will take care of all the requirements and data preprocessing for training and evaluating a model on OntoNotes. 
 
 Simply run on the command line:
 ```
@@ -215,5 +215,15 @@ This work has been published at ACL 2024 (main conference). If you use any part,
     title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trends",
     author = "Martinelli, Giuliano and
       Barba, Edoardo  and
-      Navigli, Roberto",}
-``` 
+      Navigli, Roberto",
+        booktitle = "Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2024)",
+    year      = "2024",
+    address   = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+}
+```
+
+
+## License
+
+The data and software are licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
