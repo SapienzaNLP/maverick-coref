@@ -6,7 +6,8 @@
 
 [![Conference](https://img.shields.io/badge/ACL%202024-red)](https://2024.aclweb.org/)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-green.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
-[![Pip Package](https://img.shields.io/badge/🐍%20Python%20package-blue)](https://huggingface.co/Babelscape/cner-base)
+[![Pip Package](https://img.shields.io/badge/🐍%20Python%20package-blue)](https://pypi.org/project/maverick-coref/)
+[![git](https://img.shields.io/badge/Git%20Repo%20-yellow.svg)](https://github.com/SapienzaNLP/maverick-coref)
 </div>
 
 
@@ -35,7 +36,7 @@ Maverick models can be loaded using huggingface_id or local path:
 ```bash
 from maverick import Maverick
 model = Maverick(
-  hf_name_or_path = "maverick_hf_name" | "maverick_ckpt_path", default = "SapienzaNLP/maverick-mes-ontonotes"
+  hf_name_or_path = "maverick_hf_name" | "maverick_ckpt_path", default = "sapienzanlp/maverick-mes-ontonotes"
   device = "cpu" | "cuda", default = "cuda:0"
 )
 ```
@@ -153,10 +154,10 @@ Since Coreference Resolution may serve as a stepping stone for many downstream u
 
 This same repository contains also the code to train and evaluate Maverick systems using pytorch-lightning and Hydra.
 
-**We strongly suggest to directly use the [python package](http://pypi.com) for easier inference and downstream usage.** 
+**We strongly suggest to directly use the [python package](https://pypi.org/project/maverick-coref/) for easier inference and downstream usage.** 
 
-## Environment Setup
-To set up the training and evaluation environment , we suggest using the bash script setup.sh that you can find at top level in this repository. This script will handle the creation of a new conda environment and will take care of all the requirements and data preprocessing for training and evaluating a model on OntoNotes. 
+## Environment
+To set up the training and evaluation environment , run the bash script setup.sh that you can find at top level in this repository. This script will handle the creation of a new conda environment and will take care of all the requirements and data preprocessing for training and evaluating a model on OntoNotes. 
 
 Simply run on the command line:
 ```
@@ -164,42 +165,42 @@ bash ./setup.sh
 ```
 N.B. Remember to put the zip file *ontonotes-release-5.0_LDC2013T19.tgz* in the folder *data/prepare_ontonotes/* if you want to preprocess Ontonotes with the standard preprocessing proposed by [e2e-coref](https://github.com/kentonl/e2e-coref/). It can be downloaded, upon registration, at the following [link](https://catalog.ldc.upenn.edu/LDC2013T19)
 
-## Hydra environment
+## Hydra
 This repository uses [Hydra](https://hydra.cc/) configuration environment.
 
-- In *conf/data/* each yaml file contains a dataset configuration, which can be tailored to future datasets.
-- In *conf/evaluation/*, default_evaluation.yaml contains the model checkpoint file path and device for model evaluation.
-- In *conf/logging/*, wandb_logging.yaml contains details for wandb logging.
-- In *conf/model/*, each yaml file defines a model setup.
-- In *conf/train/*, default_train.yaml contains training details.
+- In *conf/data/* each yaml file contains a dataset configuration.
+- *conf/evaluation/* contains the model checkpoint file path and device settings for model evaluation.
+- *conf/logging/* contains details for wandb logging.
+- In *conf/model/*, each yaml file contains a model setup.
+-  *conf/train/* contains training configurations.
 - *conf/root.yaml* regulates the overall configuration of the environment.
 
-## Train a new model
-To traina a Maverick model, modify *conf/root.yaml* with your custom setup. 
+## Train
+To train a Maverick model, modify *conf/root.yaml* with your custom setup. 
 By default, this file contains the settings for training and evaluating on the OntoNotes dataset.
 
-To train a new model activate the environment previously created using in the Environment Setup step, and run the following script:
+To train a new model, follow the steps in  [Environment](#environment) section and run the following script:
 ```
 conda activate env_name
 python maverick/train.py
 ```
 
-## Evaluate an existing model
+
+## Evaluate
 To evaluate an existing model, it is necessary to set up two different environment variables.
-1. Set the dataset path in conf/root.yaml, by default it is set to ontonotes
-2. Set the model checkpoint path in conf/evaluation/default_evaluation.yaml
+1. Set the dataset path in conf/root.yaml, by default it is set to OntoNotes.
+2. Set the model checkpoint path in conf/evaluation/default_evaluation.yaml.
 
 Finally run the following:
-
 ```
 conda activate env_name
 python maverick/evaluate.py
 ```
-This will directly output the CoNLL-2012 scores, and, under the experiments/ folder,  a output.jsonlines file containing the model outputs.
+This will directly output the CoNLL-2012 scores, and, under the experiments/ folder,  a output.jsonlines file containing the model outputs in OntoNotes style.
 
 ### Replicate paper results
 The weights of each model can be found in the [SapienzaNLP huggingface hub](https://huggingface.co/collections/sapienzanlp/maverick-coreference-resolution-66a750a50246fad8d9c7086a).
-To replicate any of the paper results,  download the weights.ckpt of a model from the its model card and follow the steps reported in the **Evaluate an existing model** section.
+To replicate any of the paper results,  download the weights.ckpt of a model from the its model card and follow the steps reported in the [Evaluate](#evaluate) section.
 
 E.G. to replicate the state of the art results of Maverick_mes on OntoNotes:
 - download the weights from [link](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes/blob/main/weights.ckpt).
@@ -207,12 +208,11 @@ E.G. to replicate the state of the art results of Maverick_mes on OntoNotes:
 - activate the project's conda environment.
 - run *python maverick/evaluate.py*
 
-
- ## Citation
+# Citation
 This work has been published at ACL 2024 (main conference). If you use any part, please consider citing our paper as follows:
 ```bibtex
 @inproceedings{martinelli-etal-2024-maverick,
-    title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trendsn",
+    title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trends",
     author = "Martinelli, Giuliano and
       Barba, Edoardo  and
       Navigli, Roberto",}
