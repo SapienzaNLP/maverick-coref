@@ -4,7 +4,7 @@
 <div align="center">
 
 
-[![Conference](https://img.shields.io/badge/ACL%202024-red)](https://2024.aclweb.org/)
+[![Conference](https://img.shields.io/badge/ACL%202024%20Paper-red)](https://arxiv.org/pdf/2407.21489)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-green.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![Pip Package](https://img.shields.io/badge/🐍%20Python%20package-blue)](https://pypi.org/project/maverick-coref/)
 [![git](https://img.shields.io/badge/Git%20Repo%20-yellow.svg)](https://github.com/SapienzaNLP/maverick-coref)
@@ -12,7 +12,7 @@
 
 
 This is the official repository for [*Maverick:
-Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://arxiv.org/pdf/todo/).  
+Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://arxiv.org/pdf/2407.21489).  
 
 
 # Python Package
