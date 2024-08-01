@@ -209,7 +209,7 @@ E.G. to replicate the state of the art results of Maverick_mes on OntoNotes:
 - run *python maverick/evaluate.py*
 
 # Citation
-This work has been published at ACL 2024 (main conference). If you use any part, please consider citing our paper as follows:
+This work has been published at [ACL 2024 (main conference)](https://arxiv.org/pdf/2407.21489). If you use any part, please consider citing our paper as follows:
 ```bibtex
 @inproceedings{martinelli-etal-2024-maverick,
     title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trends",
