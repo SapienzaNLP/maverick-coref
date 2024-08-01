@@ -175,13 +175,14 @@ This repository uses [Hydra](https://hydra.cc/) configuration environment.
 -  *conf/train/* contains training configurations.
 - *conf/root.yaml* regulates the overall configuration of the environment.
 
+
 ## Train
 To train a Maverick model, modify *conf/root.yaml* with your custom setup. 
 By default, this file contains the settings for training and evaluating on the OntoNotes dataset.
 
 To train a new model, follow the steps in  [Environment](#environment) section and run the following script:
 ```
-conda activate env_name
+conda activate maverick_env
 python maverick/train.py
 ```
 
@@ -202,8 +203,8 @@ This will directly output the CoNLL-2012 scores, and, under the experiments/ fol
 The weights of each model can be found in the [SapienzaNLP huggingface hub](https://huggingface.co/collections/sapienzanlp/maverick-coreference-resolution-66a750a50246fad8d9c7086a).
 To replicate any of the paper results,  download the weights.ckpt of a model from the its model card and follow the steps reported in the [Evaluate](#evaluate) section.
 
-E.G. to replicate the state of the art results of Maverick_mes on OntoNotes:
-- download the weights from [link](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes/blob/main/weights.ckpt).
+E.G. to replicate the state of the art results of *Maverick_mes* on OntoNotes:
+- download the weights from [here](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes/blob/main/weights.ckpt).
 - copy the local path to the weights in conf/evaluation/default_evaluation.yaml.
 - activate the project's conda environment.
 - run *python maverick/evaluate.py*
