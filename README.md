@@ -201,16 +201,16 @@ This will directly output the CoNLL-2012 scores, and, under the experiments/ fol
 
 ### Replicate paper results
 The weights of each model can be found in the [SapienzaNLP huggingface hub](https://huggingface.co/collections/sapienzanlp/maverick-coreference-resolution-66a750a50246fad8d9c7086a).
-To replicate any of the paper results,  download the weights.ckpt of a model from the its model card and follow the steps reported in the [Evaluate](#evaluate) section.
+To replicate any of the paper results,  download the weights.ckpt of a model from the its model card files and follow the steps reported in the [Evaluate](#evaluate) section.
 
 E.G. to replicate the state of the art results of *Maverick_mes* on OntoNotes:
 - download the weights from [here](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes/blob/main/weights.ckpt).
 - copy the local path of the weights in conf/evaluation/default_evaluation.yaml.
-- activate the project's conda environment.
+- activate the project's conda environment with *conda activate maverick_coref*.
 - run *python maverick/evaluate.py*
 
 # Citation
-This work has been published at [ACL 2024 (main conference)](https://arxiv.org/pdf/2407.21489). If you use any part, please consider citing our paper as follows:
+This work has been published at [ACL 2024 main conference](https://arxiv.org/pdf/2407.21489). If you use any part, please consider citing our paper as follows:
 ```bibtex
 @inproceedings{martinelli-etal-2024-maverick,
     title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trends",
