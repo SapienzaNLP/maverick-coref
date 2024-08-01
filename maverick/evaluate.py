@@ -38,11 +38,10 @@ def evaluate(conf: omegaconf.DictConfig):
     hydra.utils.log.info("Using {} as device".format(device))
     pl_data_module: BasePLDataModule = hydra.utils.instantiate(conf.data.datamodule, _recursive_=False)
 
-    cwd = str(hydra.utils.get_original_cwd())
     pl_data_module.prepare_data()
     pl_data_module.setup("test")
 
-    jsonlines_to_html(pl_data_module.test_dataloader().dataset.path, "test")
+    # jsonlines_to_html(pl_data_module.test_dataloader().dataset.path, "test")
     logger.log(f"Instantiating the Model from {conf.evaluation.checkpoint}")
     model = BasePLModule.load_from_checkpoint(conf.evaluation.checkpoint, _recursive_=False, map_location=device)
     if "gap" not in pl_data_module.test_dataloader().dataset.path:
@@ -73,14 +72,14 @@ def evaluate(conf: omegaconf.DictConfig):
                 infos["clusters"] = pred
                 f.write(json.dumps(infos) + "\n")
 
-        jsonlines_to_html("experiments/output.jsonlines", "output")
+        # jsonlines_to_html("experiments/output.jsonlines", "output")
     else:
         predictions = model_predictions_with_dataloader(model, pl_data_module.test_dataloader(), device)
         with open("data/gap/gap-test-ontoformat.jsonl", "r") as fr:
             with open("data/gap/gap-test-output.tsv", "w") as fw:
                 for line, pred in zip(fr.readlines(), predictions):
                     doc = json.loads(line)
-                    flattened = flatten(doc["sentences"])
+                    # flattened = flatten(doc["sentences"])
                     A, B = A_and_B_corefs(pred, doc["gap_pronoun_offsets"], doc["gap_A_offsets"], doc["gap_B_offsets"])
                     fw.write(doc["doc_key"] + "\t" + str(A) + "\t" + str(B) + "\n")
     return

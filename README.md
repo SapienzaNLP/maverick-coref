@@ -205,7 +205,7 @@ To replicate any of the paper results,  download the weights.ckpt of a model fro
 
 E.G. to replicate the state of the art results of *Maverick_mes* on OntoNotes:
 - download the weights from [here](https://huggingface.co/sapienzanlp/maverick-mes-ontonotes/blob/main/weights.ckpt).
-- copy the local path to the weights in conf/evaluation/default_evaluation.yaml.
+- copy the local path of the weights in conf/evaluation/default_evaluation.yaml.
 - activate the project's conda environment.
 - run *python maverick/evaluate.py*
 
