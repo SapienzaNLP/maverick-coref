@@ -178,7 +178,15 @@ class RepresentationLayer(torch.nn.Module):
 
 def download_load_spacy():
     try:
+        import nltk
         nlp = spacy.load("en_core_web_sm", exclude=["tagger", "parser", "lemmatizer", "ner", "textcat"])
+   
+        #colab fix
+        try:
+            import nltk
+            nltk.data.find('tokenizers/punkt')
+        except:
+            nltk.download("punkt")
     except:
         from spacy.cli import download
         import nltk

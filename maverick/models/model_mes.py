@@ -221,21 +221,17 @@ class Maverick_mes(torch.nn.Module):
         return new_cluster_labels
 
     def _get_all_labels(self, clusters_labels, categories_masks):
-        batch_size, max_k, _ = clusters_labels.size()
 
         categories_labels = clusters_labels.unsqueeze(1).repeat(1, self.num_cats, 1, 1) * categories_masks
         all_labels = categories_labels
-        # null cluster
-        # zeros = torch.zeros((batch_size, self.num_cats, max_k, 1), device=self.encoder.device)
-        # all_labels = torch.cat((all_labels, zeros), dim=-1)  # [batch_size, num_cats + 1, max_k, max_k + 1]
-        # no_antecedents = 1 - torch.sum(all_labels, dim=-1).bool().float()
-        # all_labels[:, :, :, -1] = no_antecedents
 
         return all_labels
 
     def mes_span_clustering(
         self, mention_start_reps, mention_end_reps, mention_start_idxs, mention_end_idxs, gold, stage, mask, add, sing
     ):
+        if mention_start_reps[0].shape[0] == 0:
+            return torch.tensor([0.0], requires_grad=True, device=self.encoder.device), []
         coref_logits = self._calc_coref_logits(mention_start_reps, mention_end_reps)
         coref_logits = coref_logits[0] * mask[0]
         coreference_loss = torch.tensor([0.0], requires_grad=True, device=self.encoder.device)
@@ -453,7 +449,7 @@ class Maverick_mes(torch.nn.Module):
             mention_end_idxs = mention_idxs[:, 1]
             mentions_start_hidden_states = torch.index_select(lhs, 1, mention_start_idxs)
             mentions_end_hidden_states = torch.index_select(lhs, 1, mention_end_idxs)
-
+        
         elif longdoc == "naive":
             mention_idxs, mentions_start_hidden_states, mentions_end_hidden_states = self.naive_long_doc_forward(
                 stage, input_ids, attention_mask, eos_mask, gold_starts, gold_mentions
