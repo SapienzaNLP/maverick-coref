@@ -6,9 +6,9 @@ rich==13.6
 pandas>=2.0
 transformers>=4.34
 datasets>=2.14
-spacy==3.7
+spacy>=3.7
 jsonlines==4.0.0
-scipy>=1.11.3
+scipy>=1.10
 sentencepiece==0.1.99
 protobuf==3.20
 nltk==3.8.1

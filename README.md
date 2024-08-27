@@ -4,7 +4,7 @@
 <div align="center">
 
 
-[![Conference](https://img.shields.io/badge/ACL%202024%20Paper-red)](https://arxiv.org/pdf/2407.21489)
+[![Conference](https://img.shields.io/badge/ACL%202024%20Paper-red)](https://aclanthology.org/2024.acl-long.722.pdf)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-green.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![Pip Package](https://img.shields.io/badge/🐍%20Python%20package-blue)](https://pypi.org/project/maverick-coref/)
 [![git](https://img.shields.io/badge/Git%20Repo%20-yellow.svg)](https://github.com/SapienzaNLP/maverick-coref)
@@ -12,7 +12,7 @@
 
 
 This is the official repository for [*Maverick:
-Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://arxiv.org/pdf/2407.21489).  
+Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://aclanthology.org/2024.acl-long.722.pdf).  
 
 
 # Python Package
@@ -210,17 +210,20 @@ E.G. to replicate the state of the art results of *Maverick_mes* on OntoNotes:
 - run *python maverick/evaluate.py*
 
 # Citation
-This work has been published at [ACL 2024 main conference](https://arxiv.org/pdf/2407.21489). If you use any part, please consider citing our paper as follows:
+This work has been published at [ACL 2024 main conference](https://aclanthology.org/2024.acl-long.722.pdf). If you use any part, please consider citing our paper as follows:
 ```bibtex
 @inproceedings{martinelli-etal-2024-maverick,
     title = "Maverick: Efficient and Accurate Coreference Resolution Defying Recent Trends",
-    author = "Martinelli, Giuliano and
+    author = "Martinelli, Giuliano  and
       Barba, Edoardo  and
       Navigli, Roberto",
-        booktitle = "Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2024)",
-    year      = "2024",
-    address   = "Bangkok, Thailand",
+    booktitle = "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
     publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.acl-long.722",
+    pages = "13380--13394",
 }
 ```
 
@@ -228,3 +231,5 @@ This work has been published at [ACL 2024 main conference](https://arxiv.org/pdf
 ## License
 
 The data and software are licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+

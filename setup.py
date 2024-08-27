@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="maverick-coref",
-    version="1.0.1",
+    version="1.0.3",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/sapienzanlp/maverick-coref",

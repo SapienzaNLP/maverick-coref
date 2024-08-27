@@ -36,6 +36,7 @@ def jsonlines_to_html(jsonlines_input_name, output):
 def evaluate(conf: omegaconf.DictConfig):
     device = conf.evaluation.device
     hydra.utils.log.info("Using {} as device".format(device))
+    print(conf.data.datamodule)
     pl_data_module: BasePLDataModule = hydra.utils.instantiate(conf.data.datamodule, _recursive_=False)
 
     pl_data_module.prepare_data()
@@ -72,7 +73,7 @@ def evaluate(conf: omegaconf.DictConfig):
                 infos["clusters"] = pred
                 f.write(json.dumps(infos) + "\n")
 
-        # jsonlines_to_html("experiments/output.jsonlines", "output")
+                # jsonlines_to_html("experiments/output.jsonlines", "output")
     else:
         predictions = model_predictions_with_dataloader(model, pl_data_module.test_dataloader(), device)
         with open("data/gap/gap-test-ontoformat.jsonl", "r") as fr:
@@ -145,9 +146,9 @@ def model_predictions_with_dataloader(model, test_dataloader, device):
             input_ids=batch["input_ids"].to(device),
             attention_mask=batch["attention_mask"].to(device),
             eos_mask=batch["eos_mask"].to(device),
-            gold_starts=batch["gold_starts"].to(device),
-            gold_mentions=batch["gold_mentions"].to(device),
-            gold_clusters=batch["gold_clusters"].to(device),
+            # gold_starts=batch["gold_starts"].to(device),
+            # gold_mentions=batch["gold_mentions"].to(device),
+            # gold_clusters=batch["gold_clusters"].to(device),
             tokens=batch["tokens"],
             subtoken_map=batch["subtoken_map"],
             new_token_map=batch["new_token_map"],

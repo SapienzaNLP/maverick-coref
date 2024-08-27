@@ -85,14 +85,13 @@ class Maverick:
         mask = np.zeros((input_ids_len, input_ids_len))
         prec = 0
         for eos_idx in eos_indices:
-            for i in range(prec, eos_idx + 2):
-                for j in range(prec, eos_idx + 2):
+            for i in range(prec, eos_idx + 1):
+                for j in range(prec, eos_idx + 1):
                     mask[i][j] = 1
             prec = eos_idx
         mask = np.triu(mask)
         return mask
 
-    # enable speakers usage (only when we have tokenized input)
     @torch.no_grad()
     def predict(self, sample, singletons=False, add_gold_clusters=None, predefined_mentions=None, speakers=None):
         tokens, eos_indices, speakers, char_offsets = self.preprocess(sample, speakers)  # [[w1,w2,w3...], []]

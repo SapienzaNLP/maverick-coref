@@ -99,6 +99,8 @@ def original_token_offsets(clusters, subtoken_map, new_token_map):
                 for start, end in cluster
                 if subtoken_map[start] is not None
                 and subtoken_map[end] is not None  # only happens first evals, model predicts <s> as mentions
+                and new_token_map[subtoken_map[start]]
+                is not None  # it happens very rarely that in some weidly formatted sentences the model predicts the speaker name as a possible mention
             ]
         )
         for cluster in clusters
@@ -179,12 +181,14 @@ class RepresentationLayer(torch.nn.Module):
 def download_load_spacy():
     try:
         import nltk
+
         nlp = spacy.load("en_core_web_sm", exclude=["tagger", "parser", "lemmatizer", "ner", "textcat"])
-   
-        #colab fix
+
+        # colab fix
         try:
             import nltk
-            nltk.data.find('tokenizers/punkt')
+
+            nltk.data.find("tokenizers/punkt")
         except:
             nltk.download("punkt")
     except:
