@@ -12,7 +12,7 @@
 
 
 This is the official repository for [*Maverick:
-Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://aclanthology.org/2024.acl-long.722.pdf).  
+Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://aclanthology.org/2024.acl-long.722).  
 
 
 # Python Package
