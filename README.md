@@ -156,6 +156,8 @@ This same repository contains also the code to train and evaluate Maverick syste
 
 **We strongly suggest to directly use the [python package](https://pypi.org/project/maverick-coref/) for easier inference and downstream usage.** 
 
+
+
 ## Environment
 To set up the training and evaluation environment, run the bash script setup.sh that you can find at top level in this repository. This script will handle the creation of a new conda environment and will take care of all the requirements and data preprocessing for training and evaluating a model on OntoNotes. 
 
@@ -164,6 +166,17 @@ Simply run on the command line:
 bash ./setup.sh
 ```
 N.B. Remember to put the zip file *ontonotes-release-5.0_LDC2013T19.tgz* in the folder *data/prepare_ontonotes/* if you want to preprocess Ontonotes with the standard preprocessing proposed by [e2e-coref](https://github.com/kentonl/e2e-coref/). OntoNotes can be downloaded, upon registration, at the following [link](https://catalog.ldc.upenn.edu/LDC2013T19)
+
+## Data 
+Official Links:
+- [OntoNotes](https://catalog.ldc.upenn.edu/LDC2013T19)
+- [PreCo](https://drive.google.com/file/d/1q0oMt1Ynitsww9GkuhuwNZNq6SjByu-Y/view)
+- [LitBank](https://github.com/dbamman/litbank/tree/master/coref/conll)
+- [WikiCoref](http://rali.iro.umontreal.ca/rali/?q=en/wikicoref)
+
+Since those datasets usually require a preprocessing step to obtain the OntoNotes-like jsonlines format, we release ready-to-use version:
+https://drive.google.com/drive/u/3/folders/18dtd1Qt4h7vezlm2G0hF72aqFcAEFCUo.
+
 
 ## Hydra
 This repository uses [Hydra](https://hydra.cc/) configuration environment.
