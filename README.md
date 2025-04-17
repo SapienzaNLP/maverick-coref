@@ -165,7 +165,9 @@ Simply run on the command line:
 ```
 bash ./setup.sh
 ```
-N.B. Remember to put the zip file *ontonotes-release-5.0_LDC2013T19.tgz* in the folder *data/prepare_ontonotes/* if you want to preprocess Ontonotes with the standard preprocessing proposed by [e2e-coref](https://github.com/kentonl/e2e-coref/). OntoNotes can be downloaded, upon registration, at the following [link](https://catalog.ldc.upenn.edu/LDC2013T19)
+N.B. Remember to put the zip file *ontonotes-release-5.0_LDC2013T19.tgz* in the folder *data/prepare_ontonotes/* if you want to preprocess Ontonotes with the standard preprocessing proposed by [e2e-coref](https://github.com/kentonl/e2e-coref/). To do this, download *minimize.py* from [e2e-coref](https://github.com/kentonl/e2e-coref/) repository.
+OntoNotes dataset can be downloaded, upon registration, at the following [link](https://catalog.ldc.upenn.edu/LDC2013T19)
+
 
 ## Data 
 Official Links:
