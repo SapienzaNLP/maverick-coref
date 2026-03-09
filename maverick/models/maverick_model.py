@@ -19,6 +19,8 @@ class Maverick:
         self.model = BasePLModule.load_from_checkpoint(path, _recursive_=False, map_location=self.device)
         self.model = self.model.eval()
         self.model = self.model.model
+        # Ensure consistent dtype: encoder can load in fp16 while classifier heads are fp32
+        self.model = self.model.float()
         self.tokenizer = self.__get_model_tokenizer__()
 
     def __get_model_path__(self, hf_name_or_path):
