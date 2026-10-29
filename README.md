@@ -12,7 +12,7 @@
 
 
 This is the official repository for [*Maverick:
-Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://aclanthology.org/2024.acl-long.722).  
+Efficient and Accurate Coreference Resolution Defying Recent Trends*](https://aclanthology.org/2024.acl-long.722), Proc. of ACL 2024.
 
 
 # Python Package
@@ -176,7 +176,7 @@ Official Links:
 - [LitBank](https://github.com/dbamman/litbank/tree/master/coref/conll)
 - [WikiCoref](http://rali.iro.umontreal.ca/rali/?q=en/wikicoref)
 
-Since those datasets usually require a preprocessing step to obtain the OntoNotes-like jsonlines format, we release ready-to-use version:
+Since those datasets usually require a preprocessing step to obtain the OntoNotes-like jsonlines format, we release ready-to-use versions:
 https://drive.google.com/drive/u/3/folders/18dtd1Qt4h7vezlm2G0hF72aqFcAEFCUo.
 
 
